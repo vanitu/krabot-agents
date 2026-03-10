@@ -1,0 +1,21 @@
+{
+  "name": "prompt-templates-skill",
+  "displayName": "Prompt Templates",
+  "description": "Save, list, load, and delete named image prompt templates. Templates are stored in templates.json in the agent workspace and persist across sessions. No external API required.",
+  "version": "1.0.0",
+  "author": "vanitu",
+  "tags": ["templates", "prompts", "storage", "image-generation"],
+  "entry": "SKILL.md",
+  "minOpenclawVersion": "0.9.0",
+  "permissions": {
+    "filesystem": ["read", "write"],
+    "network": false,
+    "exec": false,
+    "sensitiveData": false
+  },
+  "dependencies": [],
+  "config": {
+    "required": false,
+    "env": []
+  }
+}

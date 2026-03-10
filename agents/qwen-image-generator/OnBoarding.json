@@ -1,0 +1,53 @@
+{
+  "steps": [
+    {
+      "title": "DashScope API Key",
+      "description": "Found in Alibaba Cloud Model Studio console → API Key.",
+      "fields": [
+        {
+          "key": "DASHSCOPE_API_KEY",
+          "label": "API Key",
+          "required": true,
+          "secret": true,
+          "type": "text",
+          "placeholder": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "hint": "Create at Alibaba Cloud Model Studio console → API Key. Starts with sk-."
+        },
+        {
+          "key": "DASHSCOPE_REGION",
+          "label": "Region",
+          "required": true,
+          "secret": false,
+          "type": "select",
+          "options": ["singapore", "virginia"],
+          "default": "singapore",
+          "hint": "Choose the region closest to you. Singapore is the default international endpoint."
+        }
+      ]
+    },
+    {
+      "title": "Image Defaults",
+      "description": "Optional. You can override these per request at any time.",
+      "fields": [
+        {
+          "key": "DEFAULT_IMAGE_SIZE",
+          "label": "Default image size",
+          "required": false,
+          "type": "select",
+          "options": ["1280*1280", "1104*1472", "1472*1104", "1696*960", "960*1696"],
+          "default": "1280*1280",
+          "hint": "1280×1280 (square), 1104×1472 (portrait 3:4), 1696×960 (landscape 16:9)."
+        },
+        {
+          "key": "DEFAULT_MODEL",
+          "label": "Default model",
+          "required": false,
+          "type": "select",
+          "options": ["wan2.6-t2i", "wan2.5-t2i-preview"],
+          "default": "wan2.6-t2i",
+          "hint": "wan2.6-t2i is the latest and recommended model."
+        }
+      ]
+    }
+  ]
+}

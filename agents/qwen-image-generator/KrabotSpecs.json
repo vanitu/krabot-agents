@@ -1,0 +1,9 @@
+{
+  "_note": "This file is filled by a platform engineer. Do not edit the template contents below.",
+  "dockerImage": "",
+  "configTemplate": "",
+  "resources": {
+    "cpu": "",
+    "memory": ""
+  }
+}

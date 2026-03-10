@@ -1,0 +1,34 @@
+{
+  "name": "qwen-image-skill",
+  "displayName": "Qwen Image Generation",
+  "description": "Generates images from text prompts using Alibaba Cloud DashScope Wan text-to-image API. Handles async task creation, polling, and result retrieval. Requires DASHSCOPE_API_KEY and DASHSCOPE_REGION env vars.",
+  "version": "1.0.0",
+  "author": "vanitu",
+  "tags": ["image-generation", "ai", "dashscope", "wan", "alibaba-cloud"],
+  "entry": "SKILL.md",
+  "minOpenclawVersion": "0.9.0",
+  "permissions": {
+    "filesystem": ["none"],
+    "network": true,
+    "exec": false,
+    "sensitiveData": true
+  },
+  "dependencies": [],
+  "config": {
+    "required": true,
+    "env": [
+      {
+        "name": "DASHSCOPE_API_KEY",
+        "description": "DashScope API key from Alibaba Cloud Model Studio console",
+        "required": true,
+        "sensitive": true
+      },
+      {
+        "name": "DASHSCOPE_REGION",
+        "description": "DashScope region: singapore or virginia",
+        "required": true,
+        "sensitive": false
+      }
+    ]
+  }
+}
