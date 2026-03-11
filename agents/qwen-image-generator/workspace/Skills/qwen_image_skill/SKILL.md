@@ -1,178 +1,62 @@
+---
+name: qwen-image-skill
+description: Generate images from text prompts using Alibaba Cloud DashScope Wan text-to-image API. Use when the user wants to create AI-generated images from text descriptions. Requires DASHSCOPE_API_KEY and DASHSCOPE_REGION environment variables.
+---
+
 # Qwen Image Skill
 
 Generate images from text prompts using the Alibaba Cloud DashScope Wan text-to-image API.
 
-## Environment Variables
+## Prerequisites
 
-| Variable | Description |
-|----------|-------------|
-| `DASHSCOPE_API_KEY` | Your DashScope API key (starts with `sk-`) |
-| `DASHSCOPE_REGION` | `singapore` or `virginia` |
+Set environment variables:
+- `DASHSCOPE_API_KEY` - Your API key (starts with `sk-`)
+- `DASHSCOPE_REGION` - `singapore` or `virginia`
 
-### Base URL by region
+## Quick Start
 
-```
-singapore → https://dashscope-intl.aliyuncs.com
-virginia  → https://dashscope-us.aliyuncs.com
-```
+Use the provided script to generate images:
 
----
-
-## Step 1: Create an Async Image Generation Task
-
-**Endpoint:** `POST <base_url>/api/v1/services/aigc/image-generation/generation`
-
-**Headers:**
-```
-Authorization: Bearer $DASHSCOPE_API_KEY
-Content-Type: application/json
-X-DashScope-Async: enable
-```
-
-**Request body:**
-```json
-{
-  "model": "wan2.6-t2i",
-  "input": {
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          { "text": "<your prompt here>" }
-        ]
-      }
-    ]
-  },
-  "parameters": {
-    "size": "1280*1280",
-    "n": 1,
-    "negative_prompt": ""
-  }
-}
-```
-
-**Example (curl):**
 ```bash
-curl -X POST "https://dashscope-intl.aliyuncs.com/api/v1/services/aigc/image-generation/generation" \
-  -H "Authorization: Bearer $DASHSCOPE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "X-DashScope-Async: enable" \
-  -d '{
-    "model": "wan2.6-t2i",
-    "input": {
-      "messages": [
-        { "role": "user", "content": [{ "text": "a fox in a snowy forest, cinematic lighting" }] }
-      ]
-    },
-    "parameters": { "size": "1280*1280", "n": 1 }
-  }'
+python scripts/generate_image.py "a fox in a snowy forest, cinematic lighting" --output ./fox.png
 ```
 
-**Successful response:**
-```json
-{
-  "output": {
-    "task_id": "abc123def456",
-    "task_status": "PENDING"
-  },
-  "request_id": "xxx"
-}
-```
+### Script Options
 
-Save the `task_id` — you need it to poll for the result.
-
----
-
-## Step 2: Poll for Task Completion
-
-**Endpoint:** `GET <base_url>/api/v1/tasks/{task_id}`
-
-**Headers:**
-```
-Authorization: Bearer $DASHSCOPE_API_KEY
-```
-
-**Example (curl):**
 ```bash
-curl "https://dashscope-intl.aliyuncs.com/api/v1/tasks/abc123def456" \
-  -H "Authorization: Bearer $DASHSCOPE_API_KEY"
+python scripts/generate_image.py "<prompt>" [options]
+
+Options:
+  --output PATH       Save image to file (default: download to current directory)
+  --size SIZE         Image size: 1280*1280, 1104*1472, 1472*1104, 1696*960, 960*1696
+  --n NUM             Number of images (1-4, default: 1)
+  --negative TEXT     Negative prompt to exclude elements
+  --model MODEL       Model to use: wan2.6-t2i (default), wan2.5-t2i-preview
 ```
 
-**Poll every 10 seconds.** Task status transitions:
+## Workflow
 
-```
-PENDING → RUNNING → SUCCEEDED
-                  → FAILED
-```
+The API uses async pattern:
 
----
+1. **Create task** → Receive `task_id`
+2. **Poll for result** → Status: `PENDING` → `RUNNING` → `SUCCEEDED`/`FAILED`
+3. **Download images** → URLs expire after 24 hours
 
-## Step 3: Handle the Result
+Default poll interval: 10 seconds.
 
-### On SUCCEEDED
+## Error Handling
 
-```json
-{
-  "output": {
-    "task_id": "abc123def456",
-    "task_status": "SUCCEEDED",
-    "choices": [
-      {
-        "message": {
-          "role": "assistant",
-          "content": [
-            { "image_url": "https://...generated-image-1.png" }
-          ]
-        },
-        "finish_reason": "stop"
-      }
-    ],
-    "image_count": 1
-  }
-}
-```
+Common errors and solutions:
 
-Extract image URLs from `output.choices[*].message.content[*].image_url`.
+| Code | Solution |
+|------|----------|
+| `DataInspectionFailed` | Content blocked - rephrase prompt |
+| `IPInfringementSuspect` | Avoid trademarked characters/names |
+| `Throttling` | Wait and retry |
+| `InvalidApiKey` | Check DASHSCOPE_API_KEY |
 
-**Note:** Image URLs expire after 24 hours.
+## Reference
 
-### On FAILED
-
-```json
-{
-  "output": {
-    "task_id": "abc123def456",
-    "task_status": "FAILED",
-    "code": "DataInspectionFailed",
-    "message": "Output data may contain inappropriate content."
-  }
-}
-```
-
-Common failure codes:
-
-| Code | Meaning |
-|------|---------|
-| `DataInspectionFailed` | Output blocked by content moderation |
-| `IPInfringementSuspect` | Prompt flagged for potential IP infringement |
-| `InvalidApiKey` | API key invalid or expired |
-| `Throttling` | Rate limit exceeded — retry after a delay |
-
----
-
-## Supported Models
-
-| Model | Async | Notes |
-|-------|-------|-------|
-| `wan2.6-t2i` | Yes | Latest, recommended |
-| `wan2.5-t2i-preview` | Yes | Previous generation |
-
-## Supported Sizes
-
-| Size string | Aspect ratio |
-|-------------|-------------|
-| `1280*1280` | 1:1 |
-| `1104*1472` | 3:4 |
-| `1472*1104` | 4:3 |
-| `1696*960`  | 16:9 |
-| `960*1696`  | 9:16 |
+- **Full API documentation**: See [references/api-reference.md](references/api-reference.md)
+- **Supported sizes**: 1280*1280 (1:1), 1104*1472 (3:4), 1472*1104 (4:3), 1696*960 (16:9), 960*1696 (9:16)
+- **Supported models**: `wan2.6-t2i` (recommended), `wan2.5-t2i-preview`
