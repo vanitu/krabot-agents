@@ -9,6 +9,7 @@ import argparse
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 
 
@@ -69,8 +70,12 @@ def main():
         base_url = get_base_url(region)
         result = check_task(api_key, base_url, args.task_id)
         print(json.dumps(result))
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode("utf-8") if hasattr(e, "read") else "no body"
+        print(json.dumps({"error": f"HTTP {e.code}: {e.reason}", "details": err_body}))
+        sys.exit(1)
     except Exception as e:
-        print(json.dumps({"error": str(e)}))
+        print(json.dumps({"error": str(e), "type": type(e).__name__}))
         sys.exit(1)
 
 

@@ -73,33 +73,37 @@ When a user sends a prompt (via `/generate <prompt>` or a plain-text message des
    
    **Step 1 — Create task:**
    ```bash
-   python3 scripts/create_task.py "<prompt>" --size <size> --n <n> [--negative <text>]
+   cd skills/qwen_image_skill && python3 scripts/create_task.py "<prompt>" --size <size> --n <n> [--negative <text>]
    ```
-   - Parse the JSON output to get `task_id`
+   - Parse the JSON output
+   - If `error` field exists → report error to user and stop
+   - If `task_id` exists → **save it to session state** for persistence
    - Tell user: "Starting image generation, this usually takes 30–90 seconds…"
    
-   **Step 2 — Check status (loop):**
-   ```bash
-   python3 scripts/check_status.py <task_id>
-   ```
-   - Parse JSON output for `status` field
-   - If `PENDING` or `RUNNING`: wait 10-15 seconds, then check again
-   - If `SUCCEEDED`: extract `urls` array
-   - If `FAILED`: extract `error` message and report to user
-   - **Do not use long blocking loops** — check, wait, check again
+   **Step 2 — Check status:**
+   - Get the task_id from session state
+   - Check status:
+     ```bash
+     cd skills/qwen_image_skill && python3 scripts/check_status.py <task_id>
+     ```
+   - Parse JSON output:
+     - If `error` field → report error to user
+     - If `status` is `PENDING` or `RUNNING` → tell user "Still working…" and wait 15 seconds, then check again
+     - If `status` is `SUCCEEDED` → extract `urls` array, proceed to download
+     - If `status` is `FAILED` → report error from `error` field
    
    **Step 3 — Download:**
    ```bash
-   python3 scripts/download_image.py "<url>" "<output_path>"
+   cd skills/qwen_image_skill && python3 scripts/download_image.py "<url>" "../../<filename>.png"
    ```
-   - Download each URL from the `urls` array
-   - Save to workspace folder
+   - Download each URL from the `urls` array to the workspace folder
 
 5. **On success:** send each image file to the user
 
 6. **On failure:** send a friendly error:
+   - Missing env vars: "Configuration error. Please contact support."
    - Content moderation: "Your prompt was blocked by content moderation. Please rephrase and try again."
-   - API error: "Image generation failed: <reason>. Please try again."
+   - API error: "Image generation failed. Please try again later."
 
 ### Size Shortcut Table
 
