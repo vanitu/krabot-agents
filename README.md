@@ -47,6 +47,8 @@ This is the lifecycle your agent goes through, from template to live:
 
 ```
 template-repo/
+├── agent.json          ← Agent manifest: name, slug, category, tags, avatar path
+├── avatar.png          ← Agent avatar image (referenced by agent.json)
 ├── README.md           ← What this agent does (shown to customer before launch)
 ├── HelpGuide.md        ← How to use the running agent (day-to-day reference)
 ├── OnBoarding.md       ← Step-by-step human explanation of what the customer must provide
@@ -61,7 +63,60 @@ template-repo/
         └── <skill_name>/
 ```
 
+> **`workspace/`** — The `workspace/` directory is the source of truth. There is no need to commit a `workspace.zip` — the platform builds it on the fly from the directory contents when the template is imported or synced.
+
 > **`KrabotSpecs.json`** — you must create this file with the correct filename and valid JSON structure, but its contents are filled by a platform engineer who knows which Docker image and config template to use. Leave it as a placeholder or ask a platform engineer to fill it. See `picoclaw_platform_spec.md` for full details.
+
+---
+
+## `agent.json` — Agent Manifest
+
+The `agent.json` file is the machine-readable manifest for your agent — analogous to `package.json` for NPM or a `.gemspec` for Ruby gems. It contains the catalog metadata that the Krabot platform uses to create a template record automatically from the GitHub repository.
+
+**Where it lives:** `agents/{agent-id}/agent.json` — at the root of your agent folder.
+
+### Schema
+
+```json
+{
+  "name": "Display Name",
+  "slug": "url-friendly-slug",
+  "category": "category-name",
+  "short_description": "One-sentence description shown on the catalog card.",
+  "tags": ["tag1", "tag2"],
+  "avatar": "avatar.png"
+}
+```
+
+### Field Reference
+
+| Field | Type | Required | Rules |
+|---|---|---|---|
+| `name` | string | yes | Display name shown in the template catalog |
+| `slug` | string | yes | Lowercase letters, numbers, hyphens only — **must match the agent folder name** |
+| `category` | string | yes | Category shown in catalog, e.g. `"creative"`, `"e-commerce"`, `"productivity"` |
+| `short_description` | string | yes | One sentence, max ~160 characters, shown on catalog cards |
+| `tags` | string[] | no | Lowercase strings for search and filtering |
+| `avatar` | string | no | Relative path to the avatar image within the agent folder, e.g. `"avatar.png"` |
+
+> **`slug` must match the folder name.** If the agent folder is `agents/qwen-image-generator`, the slug must be `qwen-image-generator`. This creates a single source of truth.
+
+### Example
+
+```json
+{
+  "name": "Qwen Image Generator",
+  "slug": "qwen-image-generator",
+  "category": "creative",
+  "short_description": "Generate stunning AI images from text descriptions using Alibaba Cloud Wan AI — directly in Telegram.",
+  "tags": ["image-generation", "ai", "alibaba-cloud", "wan"],
+  "avatar": "avatar.png"
+}
+```
+
+### Avatar
+
+Commit a square PNG image at the path specified in `agent.json` (e.g. `avatar.png` in the agent folder root). Recommended size: 256×256px.
 
 ---
 
@@ -422,6 +477,8 @@ These variables are available as standard environment variables when your agent 
 
 ## Authoring Checklist
 
+- [ ] `agent.json` — name, slug, category, short_description filled; slug matches folder name; avatar path set
+- [ ] `avatar.png` (or referenced image) — square PNG committed to git
 - [ ] `README.md` — written for a non-technical business user; covers what the agent does, prerequisites, limitations
 - [ ] `HelpGuide.md` — covers Telegram commands, daily usage, how to adjust settings
 - [ ] `OnBoarding.md` — step-by-step instructions for every credential/setting; includes where to find each value

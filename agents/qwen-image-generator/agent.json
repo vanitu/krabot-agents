@@ -1,0 +1,8 @@
+{
+  "name": "Qwen Image Generator",
+  "slug": "qwen-image-generator",
+  "category": "creative",
+  "short_description": "Generate stunning AI images from text descriptions using Alibaba Cloud Wan AI — directly in Telegram.",
+  "tags": ["image-generation", "ai", "alibaba-cloud", "wan"],
+  "avatar": "avatar.png"
+}
