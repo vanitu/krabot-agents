@@ -1,6 +1,6 @@
 ---
 name: qwen-image-skill
-description: Generate images from text prompts using Alibaba Cloud DashScope Wan text-to-image API. Use when the user wants to create AI-generated images from text descriptions. Requires DASHSCOPE_API_KEY and DASHSCOPE_REGION environment variables.
+description: Generate images from text prompts using Alibaba Cloud DashScope Wan text-to-image API. Async workflow with 3 scripts. Requires DASHSCOPE_API_KEY and DASHSCOPE_REGION environment variables.
 ---
 
 # Qwen Image Skill
@@ -13,50 +13,100 @@ Set environment variables:
 - `DASHSCOPE_API_KEY` - Your API key (starts with `sk-`)
 - `DASHSCOPE_REGION` - `singapore` or `virginia`
 
-## Quick Start
+## Async Workflow (3 Scripts)
 
-Use the provided script to generate images:
+The API uses async pattern. Use these 3 scripts in sequence:
 
-```bash
-python scripts/generate_image.py "a fox in a snowy forest, cinematic lighting" --output ./fox.png
-```
+### 1. Create Task
 
-### Script Options
+Creates the generation task and returns a `task_id` immediately:
 
 ```bash
-python scripts/generate_image.py "<prompt>" [options]
-
-Options:
-  --output PATH       Save image to file (default: download to current directory)
-  --size SIZE         Image size: 1280*1280, 1104*1472, 1472*1104, 1696*960, 960*1696
-  --n NUM             Number of images (1-4, default: 1)
-  --negative TEXT     Negative prompt to exclude elements
-  --model MODEL       Model to use: wan2.6-t2i (default), wan2.5-t2i-preview
+python3 scripts/create_task.py "a fox in snowy forest" --size 1280*1280 --n 1
 ```
 
-## Workflow
+**Output:** `{"task_id": "abc-123", "status": "PENDING"}`
 
-The API uses async pattern:
+| Option | Description |
+|--------|-------------|
+| `--size` | Image size: `1280*1280`, `1104*1472`, `1472*1104`, `1696*960`, `960*1696` |
+| `--n` | Number of images (1-4, default: 1) |
+| `--negative` | Negative prompt (what to exclude) |
+| `--model` | Model: `wan2.6-t2i` (default) or `wan2.5-t2i-preview` |
 
-1. **Create task** → Receive `task_id`
-2. **Poll for result** → Status: `PENDING` → `RUNNING` → `SUCCEEDED`/`FAILED`
-3. **Download images** → URLs expire after 24 hours
+### 2. Check Status
 
-Default poll interval: 10 seconds.
+Poll until status is `SUCCEEDED` or `FAILED`:
 
-## Error Handling
+```bash
+python3 scripts/check_status.py <task_id>
+```
 
-Common errors and solutions:
+**Output examples:**
 
-| Code | Solution |
-|------|----------|
-| `DataInspectionFailed` | Content blocked - rephrase prompt |
-| `IPInfringementSuspect` | Avoid trademarked characters/names |
-| `Throttling` | Wait and retry |
-| `InvalidApiKey` | Check DASHSCOPE_API_KEY |
+Pending/Running:
+```json
+{"status": "PENDING"}
+{"status": "RUNNING"}
+```
+
+Success:
+```json
+{"status": "SUCCEEDED", "urls": ["https://...", "https://..."]}
+```
+
+Failed:
+```json
+{"status": "FAILED", "error": "DataInspectionFailed: Content blocked"}
+```
+
+**Typical timing:** Check every 10-15 seconds. Usually takes 30-90 seconds.
+
+### 3. Download Images
+
+Download each URL to a file:
+
+```bash
+python3 scripts/download_image.py "<url>" "./output.png"
+```
+
+**Output:** `{"success": true, "path": "./output.png"}`
+
+## Full Example Workflow
+
+```bash
+# Step 1: Create task
+TASK=$(python3 scripts/create_task.py "colorful avatar" --size 1280*1280 --n 1)
+TASK_ID=$(echo $TASK | python3 -c "import sys,json; print(json.load(sys.stdin)['task_id'])")
+
+# Step 2: Wait and check (repeat until SUCCEEDED)
+sleep 30
+STATUS=$(python3 scripts/check_status.py "$TASK_ID")
+# Parse: echo $STATUS | python3 -c "import sys,json; print(json.load(sys.stdin)['status'])"
+
+# Step 3: Download each URL
+python3 scripts/download_image.py "<url_from_status>" "./avatar.png"
+```
+
+## Error Codes
+
+| Code | Meaning | Action |
+|------|---------|--------|
+| `DataInspectionFailed` | Content blocked | Rephrase prompt |
+| `IPInfringementSuspect` | IP violation detected | Avoid trademarked names |
+| `InvalidApiKey` | Bad API key | Check DASHSCOPE_API_KEY |
+| `Throttling` | Rate limited | Wait and retry |
+
+## Size Reference
+
+| Size | Aspect |
+|------|--------|
+| `1280*1280` | 1:1 |
+| `1104*1472` | 3:4 (portrait) |
+| `1472*1104` | 4:3 (landscape) |
+| `1696*960` | 16:9 (widescreen) |
+| `960*1696` | 9:16 (mobile) |
 
 ## Reference
 
-- **Full API documentation**: See [references/api-reference.md](references/api-reference.md)
-- **Supported sizes**: 1280*1280 (1:1), 1104*1472 (3:4), 1472*1104 (4:3), 1696*960 (16:9), 960*1696 (9:16)
-- **Supported models**: `wan2.6-t2i` (recommended), `wan2.5-t2i-preview`
+See [references/api-reference.md](references/api-reference.md) for full API details.
