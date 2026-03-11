@@ -84,11 +84,18 @@ The `agent.json` file is the machine-readable manifest for your agent — analog
   "category": "category-name",
   "short_description": "One-sentence description shown on the catalog card.",
   "tags": ["tag1", "tag2"],
-  "avatar": "avatar.png"
+  "avatar": "avatar.png",
+  "readme": "README.md",
+  "help_guide": "HelpGuide.md",
+  "onboarding_md": "OnBoarding.md",
+  "onboarding_json": "OnBoarding.json",
+  "workspace": "workspace"
 }
 ```
 
 ### Field Reference
+
+#### Catalog metadata (required)
 
 | Field | Type | Required | Rules |
 |---|---|---|---|
@@ -97,9 +104,23 @@ The `agent.json` file is the machine-readable manifest for your agent — analog
 | `category` | string | yes | Category shown in catalog, e.g. `"creative"`, `"e-commerce"`, `"productivity"` |
 | `short_description` | string | yes | One sentence, max ~160 characters, shown on catalog cards |
 | `tags` | string[] | no | Lowercase strings for search and filtering |
-| `avatar` | string | no | Relative path to the avatar image within the agent folder, e.g. `"avatar.png"` |
+| `avatar` | string | no | Relative path to the avatar image within the agent folder. Default: `"avatar.png"` |
+
+#### File path overrides (optional)
+
+All paths are **relative to the agent folder**. If omitted, the defaults shown below are used. Override only if your files use different names.
+
+| Field | Default | Description |
+|---|---|---|
+| `readme` | `"README.md"` | Product description page shown before launch |
+| `help_guide` | `"HelpGuide.md"` | Day-to-day user guide shown on the krabot page |
+| `onboarding_md` | `"OnBoarding.md"` | Human-readable setup instructions |
+| `onboarding_json` | `"OnBoarding.json"` | Machine-readable setup form schema |
+| `workspace` | `"workspace"` | Directory zipped and delivered to the agent on first start |
 
 > **`slug` must match the folder name.** If the agent folder is `agents/qwen-image-generator`, the slug must be `qwen-image-generator`. This creates a single source of truth.
+
+> **`krabot_specs`** is intentionally not in `agent.json` — it is managed by the admin in the web UI, not by the agent author.
 
 ### Example
 
@@ -110,7 +131,12 @@ The `agent.json` file is the machine-readable manifest for your agent — analog
   "category": "creative",
   "short_description": "Generate stunning AI images from text descriptions using Alibaba Cloud Wan AI — directly in Telegram.",
   "tags": ["image-generation", "ai", "alibaba-cloud", "wan"],
-  "avatar": "avatar.png"
+  "avatar": "avatar.png",
+  "readme": "README.md",
+  "help_guide": "HelpGuide.md",
+  "onboarding_md": "OnBoarding.md",
+  "onboarding_json": "OnBoarding.json",
+  "workspace": "workspace"
 }
 ```
 
