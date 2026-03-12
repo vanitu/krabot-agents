@@ -114,11 +114,15 @@ I am an AI image generation assistant powered by Alibaba Cloud's Wan text-to-ima
 
 ---
 
-## Step 7: Self-Cleanup
+## Step 7: Mark Initialization Complete
 
-**Delete `BOOTSTRAP.md` from the workspace.**
+**Write empty content to `BOOTSTRAP.md`.**
 
-Since initialization is complete and all checks passed, the bootstrap file is no longer needed. Remove it to indicate successful first-time setup.
+Since all checks passed and initialization is complete, overwrite the file with empty content to indicate successful setup. This marks the session as initialized while keeping the file present for future session starts (AGENTS.md requires reading it at every session start).
+
+```
+WriteFile({"path": "BOOTSTRAP.md", "content": ""})
+```
 
 ---
 
