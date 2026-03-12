@@ -1,0 +1,21 @@
+{
+  "name": "UI/UX Spec Architect",
+  "slug": "ui-ux-spec-architect",
+  "category": "productivity",
+  "short_description": "Transform your ideas into developer-ready UI/UX specifications \u2014 from rough concepts to detailed wireframes, user flows, and asset requirements",
+  "tags": [
+    "ui-design",
+    "ux-design",
+    "specifications",
+    "wireframes",
+    "prototyping",
+    "design-docs",
+    "developer-handoff"
+  ],
+  "avatar": "avatar.png",
+  "readme": "README.md",
+  "help_guide": "HelpGuide.md",
+  "onboarding_md": "OnBoarding.md",
+  "onboarding_json": "OnBoarding.json",
+  "workspace": "workspace"
+}

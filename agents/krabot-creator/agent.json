@@ -1,0 +1,15 @@
+{
+  "name": "Krabot Creator",
+  "slug": "krabot-creator",
+  "category": "developer-tools",
+  "tags": ["agent-creation", "scaffolding", "wizard", "developer-tools"],
+  "description": "Interactive wizard that guides you through creating complete Krabot agents. No coding required — just answer a few questions and get a production-ready agent.",
+  "files": {
+    "avatar": "avatar.png.jpg",
+    "readme": "README.md",
+    "help": "HelpGuide.md",
+    "onboarding": "OnBoarding.md",
+    "workspace": "workspace"
+  },
+  "version": "1.0.0"
+}
