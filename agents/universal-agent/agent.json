@@ -1,0 +1,23 @@
+{
+  "name": "Universal Agent",
+  "slug": "universal-agent",
+  "category": "general",
+  "short_description": "Your personal AI companion that learns what you need and helps get things done — just tell it what you want",
+  "tags": [
+    "universal",
+    "general",
+    "assistant",
+    "personal-assistant",
+    "productivity",
+    "writing",
+    "planning",
+    "learning",
+    "research"
+  ],
+  "avatar": "avatar.png",
+  "readme": "README.md",
+  "help_guide": "HelpGuide.md",
+  "onboarding_md": "OnBoarding.md",
+  "onboarding_json": "OnBoarding.json",
+  "workspace": "workspace"
+}
