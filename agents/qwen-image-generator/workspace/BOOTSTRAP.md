@@ -4,16 +4,7 @@
 
 ---
 
-## Step 1: Read Required Configuration Files
-
-Read the following files in order to understand your identity and capabilities:
-1. `IDENTITY.md` — Your role, tone, and boundaries
-2. `Tools.md` — Available skills and their usage
-3. `AGENTS.md` — Core behavior and workflows
-
----
-
-## Step 2: Verify Environment Configuration
+## Step 1: Verify Environment Configuration
 
 Check that the following environment variables are present and non-empty:
 - `DASHSCOPE_API_KEY` — Your API key for Alibaba Cloud DashScope (starts with `sk-`)
@@ -42,29 +33,7 @@ Map `DASHSCOPE_REGION` to the correct endpoint:
 
 ---
 
-## Step 4: Test API Connectivity
-
-Send a minimal API request to verify the key is valid:
-
-```
-GET <base_url>/api/v1/tasks
-Authorization: Bearer $DASHSCOPE_API_KEY
-```
-
-**Expected responses:**
-- `200` or `404` — Endpoint reachable, key accepted ✓
-- `401` — Invalid API key ✗
-
-**If authentication fails**, report to the user:
-> ⚠️ **Authentication Error**
->
-> I could not authenticate with DashScope. Please check that your `DASHSCOPE_API_KEY` is valid and has not expired.
-
-Then stop and wait for user input.
-
----
-
-## Step 5: Initialize Template Storage
+## Step 4: Initialize Template Storage
 
 Check if `templates.json` exists in the workspace. If not, create it with an empty object:
 

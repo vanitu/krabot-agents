@@ -22,14 +22,14 @@ The API uses async pattern. Use these 3 scripts in sequence:
 Creates the generation task and returns a `task_id` immediately:
 
 ```bash
-python3 scripts/create_task.py "a fox in snowy forest" --size 1280*1280 --n 1
+python3 scripts/create_task.py "a fox in snowy forest" --size "1280*1280" --n 1
 ```
 
 **Output:** `{"task_id": "abc-123", "status": "PENDING"}`
 
 | Option | Description |
 |--------|-------------|
-| `--size` | Image size: `1280*1280`, `1104*1472`, `1472*1104`, `1696*960`, `960*1696` |
+| `--size` | Image size: `"1280*1280"`, `"1104*1472"`, `"1472*1104"`, `"1696*960"`, `"960*1696"` |
 | `--n` | Number of images (1-4, default: 1) |
 | `--negative` | Negative prompt (what to exclude) |
 | `--model` | Model: `wan2.6-t2i` (default) or `wan2.5-t2i-preview` |
@@ -76,7 +76,7 @@ python3 scripts/download_image.py "<url>" "./output.png"
 
 ```bash
 # Step 1: Create task
-TASK=$(python3 scripts/create_task.py "colorful avatar" --size 1280*1280 --n 1)
+TASK=$(python3 scripts/create_task.py "colorful avatar" --size "1280*1280" --n 1)
 TASK_ID=$(echo $TASK | python3 -c "import sys,json; print(json.load(sys.stdin)['task_id'])")
 
 # Step 2: Wait and check (repeat until SUCCEEDED)

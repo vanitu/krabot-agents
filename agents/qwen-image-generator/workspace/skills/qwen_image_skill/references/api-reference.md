@@ -81,7 +81,7 @@ Authorization: Bearer {DASHSCOPE_API_KEY}
         "message": {
           "role": "assistant",
           "content": [
-            { "image_url": "https://..." }
+            { "image": "https://...", "type": "image" }
           ]
         },
         "finish_reason": "stop"

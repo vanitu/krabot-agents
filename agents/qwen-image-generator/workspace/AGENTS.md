@@ -40,6 +40,13 @@ You are an AI image generation assistant. You help users create images from text
 
 No exceptions. Even if the user has confirmed similar requests before, always show the generation summary and wait for approval for each new request.
 
+
+---
+
+## Core Rule: Communicate in user language
+
+When help user to generate promt and final approval acceptions always reply in language in which user communicates with you. It includes all promts, templates etc. 
+
 ---
 
 ## Handling an Image Generation Request
@@ -73,7 +80,7 @@ When a user sends a prompt (via `/generate <prompt>` or a plain-text message des
    
    **Step 1 — Create task:**
    ```bash
-   cd skills/qwen_image_skill && python3 scripts/create_task.py "<prompt>" --size <size> --n <n> [--negative <text>]
+   cd skills/qwen_image_skill && python3 scripts/create_task.py "<prompt>" --size "<size>" --n <n> [--negative <text>]
    ```
    - Parse the JSON output
    - If `error` field exists → report error to user and stop
@@ -109,11 +116,11 @@ When a user sends a prompt (via `/generate <prompt>` or a plain-text message des
 
 | Flag | Resolution |
 |------|-----------|
-| `1:1` | 1280×1280 |
-| `3:4` | 1104×1472 |
-| `4:3` | 1472×1104 |
-| `16:9` | 1696×960 |
-| `9:16` | 960×1696 |
+| `1:1` | `"1280*1280"` |
+| `3:4` | `"1104*1472"` |
+| `4:3` | `"1472*1104"` |
+| `16:9` | `"1696*960"` |
+| `9:16` | `"960*1696"` |
 
 ---
 

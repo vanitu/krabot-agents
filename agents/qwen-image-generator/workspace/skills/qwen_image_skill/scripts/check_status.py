@@ -24,11 +24,17 @@ def get_base_url(region: str) -> str:
 
 
 def extract_urls(result: dict) -> list:
+    """Extract image URLs from task result."""
     urls = []
+
     for choice in result.get("choices", []):
-        for item in choice.get("message", {}).get("content", []):
-            if "image_url" in item:
-                urls.append(item["image_url"])
+        message = choice.get("message", {})
+        content = message.get("content", [])
+
+        for item in content:
+            if isinstance(item, dict) and "image" in item:
+                urls.append(item["image"])
+
     return urls
 
 
