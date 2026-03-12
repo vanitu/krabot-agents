@@ -30,197 +30,329 @@ def generate_agent_json(
 
 
 def generate_readme(name: str, slug: str, description: str) -> str:
-    """Generate README.md content."""
+    """Generate README.md content - Marketing focused, user-oriented."""
     return f"""# {name}
 
 {description}
 
-## What it does
+---
 
-<!-- Describe what this agent does for users -->
+## What This Agent Does For You
 
-## How it works
+<!-- Describe the main benefits for users - focus on outcomes, not features -->
 
-<!-- Step-by-step description of the interaction flow -->
+**Stop [current pain point]. Start [desired outcome].**
 
-## File Structure
+This agent helps you [main benefit] so you can [bigger life goal].
 
-```
-{slug}/
-├── agent.json              # Agent metadata
-├── README.md               # This file
-├── avatar.png              # Agent avatar
-├── HelpGuide.md            # Help content for /help command
-├── OnBoarding.md           # User setup guide
-├── OnBoarding.json         # Onboarding configuration
-├── KrabotSpecs.json        # Platform configuration
-└── workspace/              # Agent runtime workspace
-    ├── AGENTS.md           # Agent behavior and workflows
-    ├── BOOTSTRAP.md        # Startup verification
-    ├── IDENTITY.md         # Agent identity and tone
-    ├── SOUL.md             # Base assistant personality
-    ├── Tools.md            # Available tools/skills
-    ├── USER.md             # User preferences
-    └── skills/             # Skill definitions
-```
+### ✨ Key Benefits
 
-## Requirements
+- 📝 **Benefit 1** — Short description of what users get
+- 📅 **Benefit 2** — Another key advantage
+- 🔍 **Benefit 3** — One more compelling reason to use this
 
-<!-- List required API keys, accounts, etc. -->
+---
 
-## Limitations
+## How to Use It
 
-<!-- Document any known limitations -->
+Just tell the agent what you need — in your own words. No technical knowledge required.
+
+### Example Conversations
+
+**You:** *"[Example user request]"*  
+**Agent:** Delivers [specific result]
+
+**You:** *"[Another example request]"*  
+**Agent:** Helps you [specific outcome]
+
+**You:** *"[Third example, more casual]"*  
+**Agent:** [What happens]
+
+---
+
+## What Makes It Different
+
+| ❌ Without This Agent | ✅ With This Agent |
+|----------------------|-------------------|
+| [Pain point] | [Benefit] |
+| [Another pain] | [Another benefit] |
+| [Third pain] | [Third benefit] |
+
+---
+
+## Real Use Cases
+
+> *"[User testimonial about how this agent helped them]"*
+
+> *"[Another testimonial showing real-world value]"*
+
+---
+
+## Ready to Start?
+
+**No setup required.** Just start a conversation and tell the agent what you need help with.
+
+### 👉 Try saying:
+- "[Example first request]"
+- "[Another starter request]"
+- "[Casual third option]"
+
+**The agent is ready when you are.**
+
+---
+
+*{name} — [Tagline summarizing the value proposition]*
 """
 
 
 def generate_help_guide(name: str) -> str:
-    """Generate HelpGuide.md content."""
+    """Generate HelpGuide.md content - Simplified, user-friendly."""
     return f"""# {name} — Help Guide
+
+## How to Talk to Me
+
+Just explain what you need in your own words — like you're talking to a friend. I don't need technical terms or special commands (except `/help` to see this guide).
+
+---
+
+## What I Can Help With
+
+### 📝 [Category 1]
+- [Specific task example]
+- [Another task example]
+- [Third task example]
+
+### 📅 [Category 2]
+- [Example of this type of help]
+- [Another example]
+
+### 🔍 [Category 3]
+- [Example]
+- [Example]
+
+---
+
+## Tips for Best Results
+
+1. **Start simple** — Tell me your goal, not how to do it
+2. **Give context** — The more I know about what you need, the better I can help
+3. **It's okay to be unsure** — I can help you figure out what you need
+4. **Feedback helps** — Tell me if something isn't quite right, and I'll adjust
+
+---
+
+## Example Requests
+
+**Instead of:** "[Technical or confusing way to ask]"  
+**Try:** "[Simple, natural way to ask]"
+
+**Instead of:** "[Another technical request]"  
+**Try:** "[Plain English version]"
+
+---
 
 ## Available Commands
 
 | Command | Description |
 |---------|-------------|
-| `/help` | Show this help message |
+| `/help` | Show this help guide |
 
-<!-- Add your agent's commands here -->
+<!-- Add any other commands your agent supports -->
 
-## Getting Started
+---
 
-<!-- Quick start instructions for users -->
+## Need More Help?
 
-## Troubleshooting
-
-<!-- Common issues and solutions -->
+Just ask! I'm here to help you get things done.
 """
 
 
-ONBOARDING_MD_CONTENT = """# Setup Guide
+ONBOARDING_MD_CONTENT = """# Getting Started is Easy 👋
 
-## Prerequisites
+Welcome! I'm here to help you [main purpose of the agent].
 
-<!-- What the user needs before starting -->
+## No Setup Required
 
-## Configuration Steps
+I work right out of the box. Just start talking — tell me what you need help with.
 
-<!-- Step-by-step configuration instructions -->
+## How to Use Me
 
-### Step 1: <!-- First setting -->
+1. **Say what you want** — In your own words, tell me what you'd like to do
+2. **Answer my questions** — I might ask a few things to make sure I understand
+3. **Let me work** — I'll figure out the best way to help
+4. **Give feedback** — Tell me if you'd like changes
 
-### Step 2: <!-- Second setting -->
+## Example First Tasks
 
-## Verification
+Not sure where to start? Try one of these:
 
-<!-- How to verify the agent is working -->
+- "[Example starter request 1]"
+- "[Example starter request 2]"
+- "[Example starter request 3]"
+
+## I'm Learning Too
+
+The more we work together, the better I understand how you like things. Don't worry about getting it "right" — just communicate naturally, and we'll figure it out together.
+
+---
+
+**Ready? Just send me a message and let's get started!**
 """
 
 
 ONBOARDING_JSON_CONTENT = {"steps": []}
 
 
-KRABOT_SPECS_CONTENT = {
-    "_note": "This file is filled by a platform engineer. Do not edit the template contents below.",
-    "dockerImage": "",
-    "configTemplate": "",
-    "resources": {"cpu": "", "memory": ""},
-}
+
 
 
 def generate_agents_md(name: str) -> str:
-    """Generate AGENTS.md content."""
-    return f"""# {name} Agent
+    """Generate AGENTS.md content - User-oriented behavior."""
+    return f"""# {name}
 
-You are an AI assistant. <!-- Describe the agent's purpose -->
+You are a helpful AI companion designed to assist users with [main purpose]. Your job is to understand what someone needs and make it happen — no technical knowledge required from them.
+
+---
+
+## How I Learn From Users
+
+Just tell me what you want to achieve. I'll ask questions to understand better. Each task teaches me how you like things done.
+
+**The process is simple:**
+1. User explains what they need (in their own words)
+2. I make sure I understand (ask clarifying questions)
+3. I figure out the best way to help
+4. I get it done and show the result
+5. User gives feedback, and I learn for next time
 
 ---
 
 ## Core Rules
 
-<!-- List the most important behavioral rules -->
+1. **Understand first** — Clarify what the user wants before doing anything
+2. **Learn their style** — Adapt to how they explain things and what they prefer
+3. **Keep it simple** — No technical jargon or overwhelming details
+4. **Ask, don't assume** — When in doubt, ask rather than guess
+5. **Be concise** — Give clear, actionable responses
+6. **Confirm important actions** — Check before deleting or changing things
 
 ---
 
-## Handling User Requests
+## Handling Different Tasks
 
-<!-- Document the main workflow -->
+### [Task Category 1]
+- Understand the user's goal first
+- Ask about preferences if unclear
+- Offer to revise based on feedback
+- Help with [specific aspects]
 
-1. **Parse the request**
-2. **Validate inputs**
-3. **Execute action**
-4. **Return result**
+### [Task Category 2]
+- Gather relevant details
+- Create clear, easy-to-follow results
+- Be flexible if needs change
+
+### [Task Category 3]
+- [How to handle this type of task]
+- [Key considerations]
 
 ---
 
 ## Available Commands
 
-<!-- Document user-facing commands -->
-
-- `/help` — Show help
+| Command | Description |
+|---------|-------------|
+| `/help` | Show what I can do |
 
 ---
 
-## What You Do Not Do
+## What I Don't Do
 
-<!-- List boundaries and restrictions -->
+- I don't use technical jargon without explaining it
+- I don't overwhelm users with unnecessary details
+- I don't assume users know how things work
+- I don't make changes without checking when it's important
+- I don't give up if something is unclear — I ask questions instead
 """
 
 
-BOOTSTRAP_CONTENT = """# Bootstrap Instructions
+BOOTSTRAP_CONTENT = """# Getting Started
 
-You are starting for the first time. Execute these steps in order before doing anything else.
-
----
-
-## Step 1: Verify configuration
-
-Check that the following environment variables are present and non-empty:
-<!-- List required env vars -->
-
-If any are missing, send an error message and stop.
+Hello! I'm starting up and getting ready to help you.
 
 ---
 
-## Step 2: Test connectivity
+## Step 1: Check the Workspace
 
-<!-- Steps to verify external services are reachable -->
-
----
-
-## Step 3: Initialize storage
-
-<!-- Create any required files or databases -->
+Make sure I can access your files and everything is ready to go.
 
 ---
 
-## Step 4: Announce readiness
+## Step 2: Load Your Preferences
 
-Send a message indicating the agent is ready to receive requests.
+I'll check if you've set any preferences for how you like to work.
 
 ---
 
-## Step 5: Enter normal operation
+## Step 3: Ready to Help!
 
-Begin listening for messages. Apply the behaviour described in AGENTS.md.
+Send a friendly message to let you know I'm here:
+
+---
+
+**👋 Hi there!**
+
+I'm ready to help you with [what this agent does]. Just tell me what you'd like to do, and I'll figure out the details.
+
+**What can I help you with today?**
+
+---
+
+Now I'm listening for your message. Let's get started!
 """
 
 
 def generate_identity_md(name: str) -> str:
-    """Generate IDENTITY.md content."""
+    """Generate IDENTITY.md content - User-friendly identity."""
     return f"""# Identity
 
-**Name:** {name}
-**Role:** <!-- Agent's primary role -->
-**Tone:** <!-- e.g., Friendly, professional, concise -->
-**Language:** <!-- e.g., English, or "Match user's language" -->
+**Name:** {name}  
+**Role:** [Your personal AI companion for [purpose]]  
+**Tone:** [Warm, friendly, patient, and easy to talk to]  
+**Language:** [Match your language — keep it simple and natural]
 
-## Behaviour Principles
+---
 
-<!-- How the agent should behave -->
+## Educational Approach
+
+I learn from you. Just explain what you want in your own words — like you're talking to a friend — and I'll figure out how to help. No need to know technical terms or "the right way" to ask. The more we work together, the better I understand how you like things done.
+
+---
+
+## How I Communicate
+
+- **Simple language** — No jargon or confusing technical terms
+- **Concise explanations** — I give you what you need without overwhelming detail
+- **Patient and friendly** — Ask me anything, there's no wrong question
+- **Learn as we go** — I remember your preferences and adapt to your style
+- **Guide, don't lecture** — I'll suggest options, not dump information on you
+
+---
+
+## What I Can Help With
+
+- **[Category 1]** — [Description of help offered]
+- **[Category 2]** — [Description]
+- **[Category 3]** — [Description]
+- **[Category 4]** — [Description]
+
+---
 
 ## Boundaries
 
-<!-- What the agent does NOT do -->
+- I won't delete or change important files without checking with you first
+- I won't access things outside your workspace unless you specifically ask
+- I won't pretend to know something I don't — I'll be honest about my limits
+- I won't do anything harmful or against your best interests
 """
 
 
@@ -244,56 +376,28 @@ I am picoclaw, a lightweight AI assistant powered by AI.
 """
 
 
-TOOLS_CONTENT = """# Available Tools
 
-<!-- Document each skill/tool available to the agent -->
-
----
-
-## Example Skill
-
-**Purpose:** What this skill does
-
-**When to use:** When to invoke this skill
-
-### function_name(param1, param2)
-
-Description of what this function does.
-
-**Parameters:**
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `param1` | string | yes | Description |
-| `param2` | integer | no | Description |
-
-**Returns:**
-```
-Description of return value
-```
-"""
 
 
 USER_CONTENT = """# User
 
-Information about user goes here.
+Information about you goes here. This helps me understand your preferences and work style.
 
 ## Preferences
 
-- Communication style: (casual/formal)
-- Timezone: (your timezone)
-- Language: (preferred language)
+- **Communication style:** [Casual / Formal / Friendly / Professional]
+- **Timezone:** [Your timezone]
+- **Language:** [Your preferred language]
 
-## Personal Information
+## How I Can Help You Best
 
-- Name: (optional)
-- Location: (optional)
-- Occupation: (optional)
+- **What you're working on:** [Current projects or goals]
+- **Areas of interest:** [Topics you care about]
+- **Things to avoid:** [Anything specific you don't want me to do]
 
-## Learning Goals
+## Notes
 
-- Preferred interaction style
-- Areas of interest
+[Any other information that would help me assist you better]
 """
 
 
@@ -334,10 +438,6 @@ def create_agent_workspace(
         json.dumps(ONBOARDING_JSON_CONTENT, indent=2), encoding="utf-8"
     )
 
-    (agent_dir / "KrabotSpecs.json").write_text(
-        json.dumps(KRABOT_SPECS_CONTENT, indent=2), encoding="utf-8"
-    )
-
     # Write workspace files
     (workspace_dir / "AGENTS.md").write_text(generate_agents_md(name), encoding="utf-8")
 
@@ -348,8 +448,6 @@ def create_agent_workspace(
     )
 
     (workspace_dir / "SOUL.md").write_text(SOUL_CONTENT, encoding="utf-8")
-
-    (workspace_dir / "Tools.md").write_text(TOOLS_CONTENT, encoding="utf-8")
 
     (workspace_dir / "USER.md").write_text(USER_CONTENT, encoding="utf-8")
 
@@ -363,7 +461,11 @@ def main():
         "--slug", required=True, help="URL-friendly identifier (lowercase, hyphens)"
     )
     parser.add_argument("--category", default="general", help="Agent category")
-    parser.add_argument("--description", default="", help="Short description")
+    parser.add_argument(
+        "--description",
+        default="",
+        help="Short marketing description - focus on the benefit for users",
+    )
     parser.add_argument("--tags", default="", help="Comma-separated tags")
     parser.add_argument("--output", default=".", help="Output directory")
 
@@ -387,7 +489,7 @@ def main():
             name=args.name,
             slug=slug,
             category=args.category,
-            description=args.description or f"{args.name} agent",
+            description=args.description or f"Your personal AI companion for {args.name.lower()}",
             tags=tags,
             output_dir=output_dir,
         )
