@@ -1,94 +1,65 @@
-# Qwen Image Generator
+# Qwen Image Generator ✨
 
-Generate stunning AI images from text descriptions — directly in Telegram.
+**Turn your imagination into stunning visuals — right inside Telegram.**
 
-## What it does
+No design skills needed. No complicated software. Just describe what you want, and watch AI bring it to life in under 2 minutes.
 
-- Accepts any text description and generates a high-quality image using Alibaba Cloud's Wan AI model
-- Shows you a preview of what will be generated and **waits for your confirmation** before spending any API credits
-- Supports portrait, landscape, and square image formats
-- Lets you save your favourite prompts as **named templates** — no need to retype the same description every time
-- Works entirely on-demand: no scheduled tasks, no automatic generation
+---
 
-## How it works
+## 🎨 What You Can Create
 
-1. Send a text prompt (e.g. "a fox in a snowy forest, cinematic lighting")
-2. The agent summarises what it will generate and the settings it will use
-3. Reply **yes** to confirm — the agent submits the job to the Wan API and sends back the image when ready (typically under 2 minutes)
-4. Optionally save the prompt as a template for reuse
+From breathtaking landscapes to hyper-realistic portraits, fantasy scenes to product concepts — if you can describe it, Qwen can generate it.
 
-## File Structure
+- 🖼️ **Art & Illustrations** — Digital art, paintings, concept art
+- 🏞️ **Landscapes & Nature** — Mountains, forests, oceans, skies
+- 👤 **Portraits & Characters** — People, fantasy races, stylized avatars
+- 🏙️ **Architecture & Interiors** — Buildings, rooms, futuristic cities
+- ✏️ **Concepts & Mockups** — Logos, products, design ideas
 
-```
-qwen-image-generator/
-├── agent.json              # Agent metadata (name, slug, category, etc.)
-├── README.md               # This file — user-facing description
-├── avatar.png              # Agent avatar image
-├── HelpGuide.md            # Help content for /help command
-├── OnBoarding.md           # User setup guide (API key, region, settings)
-├── OnBoarding.json         # Structured onboarding configuration
-├── KrabotSpecs.json        # Platform-specific configuration (filled by engineer)
-└── workspace/              # Agent runtime workspace
-    ├── AGENTS.md           # Agent behavior, rules, and workflows
-    ├── BOOTSTRAP.md        # Startup verification steps
-    ├── IDENTITY.md         # Agent identity, tone, personality
-    ├── SOUL.md             # Base assistant personality (picoclaw)
-    ├── Tools.md            # Available tools/skills documentation
-    ├── USER.md             # User preferences storage
-    └── skills/             # Skill definitions
-        ├── qwen_image_skill/
-        │   ├── SKILL.md
-        │   ├── scripts/
-        │   └── references/
-        ├── prompt_templates_skill/
-        │   ├── SKILL.md
-        │   └── scripts/
-        └── ...
-```
+---
 
-### Workspace Files
+## ⚡ Why Users Love It
 
-| File | Purpose |
-|------|---------|
-| `AGENTS.md` | Core agent behavior: command handling, confirmation flows, error handling |
-| `BOOTSTRAP.md` | Startup checklist: verify env vars, test API connectivity, initialize storage |
-| `IDENTITY.md` | Agent identity: name, role, tone, language, boundaries |
-| `SOUL.md` | Base assistant personality (picoclaw) — helpful, friendly, concise |
-| `Tools.md` | Documentation for available skills and their functions |
-| `USER.md` | User preferences: communication style, timezone, language |
+| Feature | Benefit |
+|---------|---------|
+| 🚀 **One-Click Generation** | Just type your idea — no forms, no waiting rooms |
+| 💰 **Confirm Before You Spend** | Preview exactly what will be generated before any API credits are used |
+| 📐 **Perfect Dimensions** | Portrait, landscape, square — choose the format that fits |
+| 💾 **Save Your Favorites** | Turn your best prompts into reusable templates |
+| ⚡ **Lightning Fast** | Most images ready in 60-90 seconds |
 
-### Agent Configuration (agent.json)
+---
 
-```json
-{
-  "name": "Qwen Image Generator",
-  "slug": "qwen-image-generator",
-  "category": "creative",
-  "short_description": "...",
-  "tags": ["image-generation", "ai", "alibaba-cloud", "wan"],
-  "avatar": "avatar.png",
-  "readme": "README.md",
-  "help_guide": "HelpGuide.md",
-  "onboarding_md": "OnBoarding.md",
-  "onboarding_json": "OnBoarding.json",
-  "workspace": "workspace"
-}
-```
+## 🎯 How It Works
 
-## Requirements
+1. **Describe** — Send a message like *"a cyberpunk samurai in neon rain"*
+2. **Preview** — See a summary of what will be created
+3. **Confirm** — Reply **yes** to start (or cancel — no charges)
+4. **Enjoy** — Your image arrives in Telegram, ready to save or share
 
-- An Alibaba Cloud account with Model Studio (DashScope) enabled
-- A DashScope API key (takes ~2 minutes to create)
-- A Telegram bot for interacting with the agent
+---
 
-### Environment Variables
+## 💡 Pro Tips
 
-- `DASHSCOPE_API_KEY` — Your DashScope API key (starts with `sk-`)
-- `DASHSCOPE_REGION` — Region: `singapore` or `virginia`
+**Be specific for better results:**
 
-## Limitations
+> ✅ *"A cozy cabin in a snowy forest at sunset, warm light from windows, cinematic lighting"*
 
-- Image generation takes 30 seconds to 2 minutes per request
-- Generated image URLs expire after 24 hours — download any images you want to keep
-- Content moderation is enforced by the API; prompts with prohibited content will be rejected
-- Free-tier quotas apply; see Alibaba Cloud pricing for details
+> ❌ *"A house in the woods"*
+
+**Add style keywords:**
+- `cinematic`, `studio lighting`, `bokeh` — for photography
+- `oil painting`, `watercolor`, `anime style` — for artistic looks
+- `hyper-realistic`, `4K`, `unreal engine` — for detailed renders
+
+---
+
+## 🆓 Get Started in 2 Minutes
+
+1. Grab a free [DashScope API key](https://dashscope.aliyun.com) from Alibaba Cloud
+2. Set your region (Singapore or Virginia)
+3. Start generating — no subscription required, pay only for what you use
+
+---
+
+*Powered by Alibaba Cloud's state-of-the-art Wan AI model. Your creative companion, always one message away.*
