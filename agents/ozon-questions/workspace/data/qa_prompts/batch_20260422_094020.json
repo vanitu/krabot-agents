@@ -1,0 +1,32 @@
+{
+  "timestamp": "20260422_094020",
+  "status": "prepared",
+  "dry_run": true,
+  "question_count": 10,
+  "question_ids": [
+    "019dafb1-4173-7d08-9750-4a71a3c2ac43",
+    "019dae8d-2d55-76cc-b847-c71ba93fe555",
+    "019daa0e-adb4-7bc1-92af-8c5b904ad2b3",
+    "019d9d0a-ab0f-7557-b8b4-1e0ffc8f3fbc",
+    "019d80a6-3ec8-72b6-8b47-7aa4b842cc83",
+    "019d7cfb-3144-777a-92d6-173c3df47697",
+    "019d7aa9-f8c8-730b-ac9c-3de2d3e0d5c0",
+    "019d7699-cff5-7967-ba5e-753e68a0464a",
+    "019d7548-fbec-731f-a2de-cf9867f30fd5",
+    "019d7145-0032-7d2b-852d-ab5afb44c5ec"
+  ],
+  "context_paths": [
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019dafb1-4173-7d08-9750-4a71a3c2ac43_20260422_093751.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019dae8d-2d55-76cc-b847-c71ba93fe555_20260422_093751.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019daa0e-adb4-7bc1-92af-8c5b904ad2b3_20260422_093752.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d9d0a-ab0f-7557-b8b4-1e0ffc8f3fbc_20260422_093829.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d80a6-3ec8-72b6-8b47-7aa4b842cc83_20260422_093905.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d7cfb-3144-777a-92d6-173c3df47697_20260422_093905.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d7aa9-f8c8-730b-ac9c-3de2d3e0d5c0_20260422_093942.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d7699-cff5-7967-ba5e-753e68a0464a_20260422_093942.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d7548-fbec-731f-a2de-cf9867f30fd5_20260422_093943.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019d7145-0032-7d2b-852d-ab5afb44c5ec_20260422_094020.json"
+  ],
+  "prompt_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_prompts/batch_20260422_094020.txt",
+  "skipped": []
+}

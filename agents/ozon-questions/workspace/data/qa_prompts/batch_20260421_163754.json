@@ -1,0 +1,18 @@
+{
+  "timestamp": "20260421_163754",
+  "status": "prepared",
+  "dry_run": true,
+  "question_count": 3,
+  "question_ids": [
+    "019dafb1-4173-7d08-9750-4a71a3c2ac43",
+    "019dae8d-2d55-76cc-b847-c71ba93fe555",
+    "019daa0e-adb4-7bc1-92af-8c5b904ad2b3"
+  ],
+  "context_paths": [
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019dafb1-4173-7d08-9750-4a71a3c2ac43_20260421_163641.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019dae8d-2d55-76cc-b847-c71ba93fe555_20260421_163718.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_019daa0e-adb4-7bc1-92af-8c5b904ad2b3_20260421_163754.json"
+  ],
+  "prompt_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_prompts/batch_20260421_163754.txt",
+  "skipped": []
+}

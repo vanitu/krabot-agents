@@ -1,0 +1,34 @@
+{
+  "timestamp": "20260421_164449",
+  "dry_run": true,
+  "batch_metadata": "data/qa_prompts/batch_20260421_163754.json",
+  "total_questions": 3,
+  "answered": 3,
+  "unmatched_answers": 0,
+  "results": [
+    {
+      "question_id": "019dafb1-4173-7d08-9750-4a71a3c2ac43",
+      "answer": "Здравствуйте! Этот крем содержит физические (минеральные) фильтры — оксид цинка и диоксид титана.",
+      "sufficiency_score": 8,
+      "accuracy_score": 9,
+      "reasoning": "Ответ основан на составе из карточки, где указаны оксид цинка и диоксид титана — классические физические УФ-фильтры. Риск ошибки низкий, однако в составе могут присутствовать и другие фильтры, не идентифицированные по названию.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019dafb1-4173-7d08-9750-4a71a3c2ac43_20260421_164449.md"
+    },
+    {
+      "question_id": "019dae8d-2d55-76cc-b847-c71ba93fe555",
+      "answer": "Добрый день! Срок годности крема — 762 дня (примерно 2 года и 1 месяц).",
+      "sufficiency_score": 10,
+      "accuracy_score": 10,
+      "reasoning": "В карточке товара прямо указан параметр «Срок годности в днях: 762». Переведено в более понятный формат для покупателя. Точность максимальная, риск ошибки отсутствует.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019dae8d-2d55-76cc-b847-c71ba93fe555_20260421_164449.md"
+    },
+    {
+      "question_id": "019daa0e-adb4-7bc1-92af-8c5b904ad2b3",
+      "answer": "Здравствуйте! Пенка подходит для всех типов кожи и обладает увлажняющим эффектом. Однако это очищающее средство, которое смывается, поэтому для очень сухой возрастной кожи рекомендуем дополнительно использовать питательный крем или сыворотку.",
+      "sufficiency_score": 6,
+      "accuracy_score": 8,
+      "reasoning": "Карточка указывает, что пенка для всех типов кожи с эффектом увлажнения. Дополнительная рекомендация основана на общих знаниях о косметике: смываемое средство не обеспечивает достаточного увлажнения для очень сухой возрастной кожи в одиночку. Риск ошибки низкий.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019daa0e-adb4-7bc1-92af-8c5b904ad2b3_20260421_164449.md"
+    }
+  ]
+}

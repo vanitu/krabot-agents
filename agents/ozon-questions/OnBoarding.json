@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "title": "Данные Ozon Seller API",
+      "description": "Введите Client ID и API Key для подключения к вашему магазину на Ozon.",
+      "fields": [
+        {
+          "key": "OZON_CLIENT_ID",
+          "label": "Client ID",
+          "required": true,
+          "secret": false,
+          "type": "text",
+          "placeholder": "123456789",
+          "hint": "Числовой идентификатор продавца. Находится в личном кабинете Ozon Seller → Настройки → Seller API."
+        },
+        {
+          "key": "OZON_API_KEY",
+          "label": "API Key",
+          "required": true,
+          "secret": true,
+          "type": "text",
+          "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "hint": "Сгенерируйте в личном кабинете Ozon Seller → Настройки → Seller API → Сгенерировать ключ. Срок действия — 6 месяцев."
+        }
+      ]
+    }
+  ]
+}

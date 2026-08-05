@@ -1,0 +1,16 @@
+{
+  "timestamp": "20260420_201504",
+  "status": "prepared",
+  "dry_run": true,
+  "question_count": 2,
+  "question_ids": [
+    "test-q-e9a6aa6a",
+    "test-q-8aa87610"
+  ],
+  "context_paths": [
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_test-q-e9a6aa6a_20260420_201504.json",
+    "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_contexts/context_test-q-8aa87610_20260420_201504.json"
+  ],
+  "prompt_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_prompts/batch_test_20260420_201504.txt",
+  "skipped": []
+}

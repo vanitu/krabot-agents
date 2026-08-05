@@ -1,0 +1,15 @@
+{
+  "question_info": {
+    "id": "test-123",
+    "text": "Это тестовый вопрос?",
+    "sku": 123456,
+    "product_url": "https://ozon.ru/product/123",
+    "author_name": "Тест",
+    "published_at": "2026-01-01T00:00:00Z"
+  },
+  "product_context": "Тестовый продукт. SKU: 123456.",
+  "rules": "- Будь вежлив.",
+  "example": "Пример ответа.",
+  "agent_prompt": "Тестовый промпт",
+  "context_path": "/tmp/mock_context.json"
+}

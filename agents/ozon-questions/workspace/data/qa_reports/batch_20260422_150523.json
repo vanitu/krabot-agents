@@ -1,0 +1,51 @@
+{
+  "timestamp": "20260422_150523",
+  "dry_run": false,
+  "batch_metadata": "data/qa_prompts/batch_20260422_094020.json",
+  "total_questions": 10,
+  "answered": 4,
+  "unmatched_answers": 0,
+  "filtered_by_score": 6,
+  "score_thresholds": {
+    "min_accuracy_score": 7,
+    "min_sufficiency_score": 7
+  },
+  "results": [
+    {
+      "question_id": "019dafb1-4173-7d08-9750-4a71a3c2ac43",
+      "sku": 556039300,
+      "answer": "Крем содержит только физические (минеральные) фильтры — оксид цинка и диоксид титана. Химических фильтров в составе нет.",
+      "sufficiency_score": 10,
+      "accuracy_score": 10,
+      "reasoning": "Ответ основан на составе товара, где оксид цинка и диоксид титана указаны среди первых компонентов, а химических УФ-фильтров не обнаружено. Риск ошибки минимален.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019dafb1-4173-7d08-9750-4a71a3c2ac43_20260422_150523.md"
+    },
+    {
+      "question_id": "019daa0e-adb4-7bc1-92af-8c5b904ad2b3",
+      "sku": 224399373,
+      "answer": "Пенка подходит для всех типов кожи, включая сухую, и обеспечивает мягкое очищение с увлажняющим эффектом. Однако это средство для умывания, поэтому для интенсивного ухода за возрастной и очень сухой кожей рекомендуем дополнить уход питательным кремом.",
+      "sufficiency_score": 8,
+      "accuracy_score": 9,
+      "reasoning": "В карточке указано, что пенка интенсивно увлажняет и подходит для всех типов кожи, включая сухую. Однако для зрелой и очень сухой кожи одного очищающего средства недостаточно — нужен крем. Это общие знания о классе продукта.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019daa0e-adb4-7bc1-92af-8c5b904ad2b3_20260422_150523.md"
+    },
+    {
+      "question_id": "019d7cfb-3144-777a-92d6-173c3df47697",
+      "sku": 556039300,
+      "answer": "На область вокруг глаз наносить не рекомендуется — производитель прямо указывает её избегать. Наносите крем напрямую на кожу лица после полного впитывания уходового крема, за 30–40 минут до выхода на улицу.",
+      "sufficiency_score": 10,
+      "accuracy_score": 10,
+      "reasoning": "В способе применения прямо указано 'избегая области вокруг глаз' и нанесение 'на завершающем этапе ухода после полного впитывания крема'. Ответ полностью воспроизводит официальные инструкции.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019d7cfb-3144-777a-92d6-173c3df47697_20260422_150523.md"
+    },
+    {
+      "question_id": "019d7145-0032-7d2b-852d-ab5afb44c5ec",
+      "sku": 183146117,
+      "answer": "Этот продукт выпускается только в форме крема, гелевой версии у нас нет. Крем обладает лёгкой текстурой и успокаивает раздражения, поэтому может подойти и для использования после бритья.",
+      "sufficiency_score": 7,
+      "accuracy_score": 10,
+      "reasoning": "В карточке указана форма 'крем', описана лёгкая текстура и успокаивающий эффект. Данных о геле нет, но имеющиеся характеристики позволяют предположить возможность использования после бритья.",
+      "report_path": "/Users/vanitu/PaxSoftProjects/krabot/krabot-agents/agents/ozon-questions/workspace/data/qa_reports/final_019d7145-0032-7d2b-852d-ab5afb44c5ec_20260422_150523.md"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "batch_size": 10,
+  "lookup_period_days": 7,
+  "dry_run": false,
+  "min_accuracy_score": 7,
+  "min_sufficiency_score": 7
+}
